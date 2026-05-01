@@ -4156,3 +4156,53 @@ input, select, textarea {
 	}
 
 }
+/* ========================================================= */
+/* CYBER NEON EFFECTS (MENU & HEADINGS)                      */
+/* ========================================================= */
+
+/* 1. Efek Glow Neon pada Tombol MENU */
+#header nav a[href="#menu"] {
+    border: 1px solid #00f0ff !important;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.4), inset 0 0 5px rgba(0, 240, 255, 0.2) !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.8) !important;
+    color: #00f0ff !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
+    animation: cyber-flicker 5s infinite alternate; /* Efek kedip halus */
+}
+
+#header nav a[href="#menu"]:hover {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.8), inset 0 0 10px rgba(0, 240, 255, 0.4) !important;
+    background-color: rgba(0, 240, 255, 0.1) !important;
+    color: #ffffff !important;
+}
+
+/* 2. Efek Cahaya pada Judul (H1, H2, H3) */
+h1, h2, h3, .major {
+    text-shadow: 0 0 12px rgba(0, 240, 255, 0.4) !important;
+}
+
+/* 3. Animasi Flicker (Kedip ala Terminal Teknologi) */
+@keyframes cyber-flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 8px rgba(0, 240, 255, 0.8);
+    }
+    20%, 24%, 55% {
+        opacity: 0.9;
+        text-shadow: none;
+    }
+}
+
+/* 4. Garis Bawah Judul yang Menyala */
+h2.major {
+    border-bottom-color: #00f0ff !important;
+    position: relative;
+}
+h2.major::after {
+    content: '';
+    position: absolute;
+    bottom: -2px; left: 0;
+    width: 50px; height: 3px;
+    background: #00f0ff;
+    box-shadow: 0 0 15px #00f0ff;
+}
