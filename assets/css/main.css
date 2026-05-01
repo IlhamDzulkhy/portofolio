@@ -4148,22 +4148,74 @@ input, select, textarea {
 	}
 
 	@media screen and (max-width: 360px) {
+/* ========================================================= */
+/* KUSTOMISASI TEMA TEKNOLOGI & FOTO PROFIL OLEH AZUL        */
+/* ========================================================= */
 
+/* --- 1. PERBAIKAN FOTO PROFIL BULAT --- */
+#banner .logo {
+    background-color: transparent !important;
+    border: none !important;
+    height: auto !important;
+    width: auto !important;
+    border-radius: 0 !important;
+}
+#banner .logo img {
+    width: 120px !important;       /* Ukuran pas untuk foto profil */
+    height: 120px !important;
+    border-radius: 50% !important; /* Membuat bulat sempurna */
+    object-fit: cover !important;
+    border: 3px solid #48cae4 !important; /* Bingkai biru neon */
+    box-shadow: 0 0 20px rgba(72, 202, 228, 0.4) !important; /* Efek menyala */
+    display: block !important;
+    margin: 0 auto 1.3em auto !important;
+}
+
+/* --- 2. TEMA WARNA BIRU TEKNOLOGI --- */
+/* Mengganti overlay gradient bawaan dengan nuansa biru gelap */
+body, #banner, #wrapper > header, #footer {
+    background-color: #0b132b !important;
+    background-image: linear-gradient(to top, rgba(11, 19, 43, 0.9), rgba(11, 19, 43, 0.9)), url("../../images/bg.jpg") !important;
+}
+
+/* Mengubah warna latar setiap sekat/section */
+.wrapper { background-color: #0b132b !important; }
+.wrapper.style2, .features article { background-color: #1c2541 !important; }
+.wrapper.style3 { background-color: #1a2238 !important; }
+.wrapper.spotlight { background-color: #1c2541 !important; }
+.wrapper.spotlight.style2 { background-color: #141b2f !important; }
+.wrapper.spotlight.style3 { background-color: #0b132b !important; }
+
+/* --- 3. WARNA AKSEN BIRU NEON (CYAN) --- */
+a { color: #48cae4 !important; }
+a:hover { color: #90e0ef !important; }
+h1.major, h2.major, h3.major, h4.major, h5.major, h6.major, hr { 
+    border-bottom-color: rgba(72, 202, 228, 0.3) !important; 
+}
+
+/* Tombol Keren */
+input[type="submit"], input[type="button"], button, .button {
+    box-shadow: inset 0 0 0 2px rgba(72, 202, 228, 0.5) !important;
+    color: #48cae4 !important;
+}
+input[type="submit"]:hover, input[type="button"]:hover, button:hover, .button:hover {
+    background-color: rgba(72, 202, 228, 0.1) !important;
+    box-shadow: inset 0 0 0 2px #48cae4 !important;
+}
+input[type="submit"].special, button.special, .button.special {
+    background-color: #48cae4 !important;
+    color: #0b132b !important;
+}
+input[type="submit"].special:hover, button.special:hover, .button.special:hover {
+    background-color: #90e0ef !important;
+}
+
+/* Ikon Menu & Sosial Media */
+.icon.solid:before, .icon.brands:before, #header nav a[href="#menu"]:before { 
+    color: #48cae4 !important; 
+}
 		#footer .inner {
 			padding: 2em 1.5em 0.1em 1.5em ;
 		}
 
 	}
-/* ========================================================= */
-/* KUSTOMISASI FOTO PROFIL OLEH AZUL                         */
-/* ========================================================= */
-
-/* Mengatur ukuran dan bentuk foto di bagian logo banner */
-.logo img {
-    width: 100px;           /* Kamu bisa ubah ukuran ini sesuai selera (contoh: 80px, 120px) */
-    height: 100px;          /* Harus sama dengan width agar fotonya kotak sempurna */
-    border-radius: 50%;     /* Ini yang membuat fotomu jadi lingkaran sempurna */
-    object-fit: cover;      /* Memastikan fotomu tidak gepeng jika ukuran aslinya bukan kotak */
-    border: 3px solid rgba(255, 255, 255, 0.3); /* Menambahkan bingkai tipis transparan agar terlihat elegan */
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);   /* Menambahkan bayangan lembut agar fotonya lebih "pop" */
-}
