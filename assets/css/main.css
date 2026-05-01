@@ -4154,3 +4154,16 @@ input, select, textarea {
 		}
 
 	}
+/* ========================================================= */
+/* KUSTOMISASI FOTO PROFIL OLEH AZUL                         */
+/* ========================================================= */
+
+/* Mengatur ukuran dan bentuk foto di bagian logo banner */
+.logo img {
+    width: 100px;           /* Kamu bisa ubah ukuran ini sesuai selera (contoh: 80px, 120px) */
+    height: 100px;          /* Harus sama dengan width agar fotonya kotak sempurna */
+    border-radius: 50%;     /* Ini yang membuat fotomu jadi lingkaran sempurna */
+    object-fit: cover;      /* Memastikan fotomu tidak gepeng jika ukuran aslinya bukan kotak */
+    border: 3px solid rgba(255, 255, 255, 0.3); /* Menambahkan bingkai tipis transparan agar terlihat elegan */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);   /* Menambahkan bayangan lembut agar fotonya lebih "pop" */
+}
