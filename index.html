@@ -13,12 +13,12 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
-			/* Efek Scroll Mulus */
+			/* Efek Scroll Mulus dari tombol "Next" */
 			html {
 				scroll-behavior: smooth;
 			}
 			
-			/* Memaksa Kotak Galeri jadi 2x2 di HP */
+			/* Memaksa 4 Kotak Galeri jadi 2x2 di layar HP */
 			@media screen and (max-width: 736px) {
 				#four .features {
 					display: grid !important;
@@ -30,7 +30,21 @@
 					margin: 0 !important;
 					padding: 10px !important;
 				}
-				/* Mengecilkan judul dan teks di HP agar rapi */
+				/* FIX: Memaksa gambar menyesuaikan kotak dan tidak lepas */
+				#four .features article .image {
+					display: block !important;
+					width: 100% !important;
+					margin: 0 0 10px 0 !important;
+					border-radius: 5px !important; /* Menjaga sudut gambar tetap melengkung rapi */
+					overflow: hidden !important;
+				}
+				#four .features article .image img {
+					width: 100% !important;
+					height: auto !important;
+					display: block !important;
+					object-fit: cover !important; /* Biar gambar proporsional dan tidak gepeng */
+				}
+				/* Mengecilkan judul dan teks di HP agar muat & rapi */
 				#four .features article h3 {
 					font-size: 0.9em !important;
 					margin-bottom: 0.5em !important;
