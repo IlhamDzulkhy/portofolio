@@ -13,8 +13,35 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
+			/* Efek Scroll Mulus */
 			html {
 				scroll-behavior: smooth;
+			}
+			
+			/* Memaksa Kotak Galeri jadi 2x2 di HP */
+			@media screen and (max-width: 736px) {
+				#four .features {
+					display: grid !important;
+					grid-template-columns: repeat(2, 1fr) !important;
+					gap: 15px !important;
+				}
+				#four .features article {
+					width: 100% !important;
+					margin: 0 !important;
+					padding: 10px !important;
+				}
+				/* Mengecilkan judul dan teks di HP agar rapi */
+				#four .features article h3 {
+					font-size: 0.9em !important;
+					margin-bottom: 0.5em !important;
+				}
+				#four .features article p {
+					font-size: 0.75em !important;
+					line-height: 1.4 !important;
+				}
+				#four .features article .special {
+					font-size: 0.7em !important;
+				}
 			}
 		</style>
 	</head>
