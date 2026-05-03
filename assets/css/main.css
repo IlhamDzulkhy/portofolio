@@ -4207,10 +4207,9 @@ h2.major::after {
     box-shadow: 0 0 15px #00f0ff;
 }
 
-/* Hapus lapisan atas saja, biarkan lapisan bawah tetap diam (fixed) di HP */
+/* Buang lapisan atas sepenuhnya agar transparan, persis seperti tampilan laptop */
 @media screen and (max-width: 1280px) {
     #banner, #wrapper > header, #footer {
-        background-image: none !important; 
-        background-color: rgba(0, 0, 0, 0.7) !important;
+        background: transparent !important; 
     }
 }
