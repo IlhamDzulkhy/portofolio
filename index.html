@@ -18,43 +18,53 @@
 				scroll-behavior: smooth;
 			}
 			
-			/* Memaksa 4 Kotak Galeri jadi 2x2 di layar HP */
+			/* Memaksa 4 Kotak Galeri jadi 2x2 di layar HP bergaya "Card" presisi */
 			@media screen and (max-width: 736px) {
 				#four .features {
 					display: grid !important;
 					grid-template-columns: repeat(2, 1fr) !important;
-					gap: 15px !important;
+					gap: 12px !important; /* Jarak antar kotak */
 				}
 				#four .features article {
 					width: 100% !important;
 					margin: 0 !important;
-					padding: 10px !important;
+					padding: 0 !important; /* Hapus padding agar gambar bisa ngepres 100% ke ujung */
+					background-color: rgba(255, 255, 255, 0.03); /* Sedikit warna latar biar bentuk kotak terlihat tegas */
+					border-radius: 8px !important; /* Lengkungkan sudut luar kotak */
+					overflow: hidden !important; /* Potong paksa gambar yang keluar dari lengkungan */
+					display: flex !important;
+					flex-direction: column !important;
 				}
-				/* FIX: Memaksa gambar menyesuaikan kotak dan tidak lepas */
+				
+				/* FIX: Gambar benar-benar menyentuh ujung bingkai */
 				#four .features article .image {
 					display: block !important;
 					width: 100% !important;
-					margin: 0 0 10px 0 !important;
-					border-radius: 5px !important; /* Menjaga sudut gambar tetap melengkung rapi */
-					overflow: hidden !important;
+					margin: 0 !important;
+					border-radius: 0 !important; 
 				}
 				#four .features article .image img {
 					width: 100% !important;
-					height: auto !important;
+					height: 110px !important; /* Paksa tinggi gambar seragam agar rapi sejajar */
 					display: block !important;
-					object-fit: cover !important; /* Biar gambar proporsional dan tidak gepeng */
+					object-fit: cover !important; 
 				}
-				/* Mengecilkan judul dan teks di HP agar muat & rapi */
+				
+				/* Padding hanya diberikan pada Teks dan Tombol agar tidak menempel ke pinggir */
 				#four .features article h3 {
-					font-size: 0.9em !important;
-					margin-bottom: 0.5em !important;
+					font-size: 0.85em !important;
+					margin: 12px 10px 5px 10px !important;
 				}
 				#four .features article p {
-					font-size: 0.75em !important;
+					font-size: 0.7em !important;
 					line-height: 1.4 !important;
+					margin: 0 10px 10px 10px !important;
+					flex-grow: 1 !important; /* Mendorong tombol selalu sejajar di bawah */
 				}
 				#four .features article .special {
-					font-size: 0.7em !important;
+					font-size: 0.65em !important;
+					margin: 0 10px 12px 10px !important;
+					align-self: flex-start !important;
 				}
 			}
 		</style>
