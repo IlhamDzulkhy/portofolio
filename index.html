@@ -72,82 +72,144 @@
 				object-fit: cover !important;
 			}
 			/* =================================================== */
-			/* EFEK ANIMASI HUJAN BINER (BINARY MATRIX RAIN)       */
+			/* EFEK HOLOGRAM 3D KOMPLEKS (TANPA BACKGROUND HITAM)  */
 			/* =================================================== */
 			
-			/* 1. Membuat bingkai lingkaran gelap & mask agar animasi terpotong rapi */
-			.image.binary-matrix {
-				border-radius: 50% !important; /* Paksa jadi lingkaran sempurna */
-				aspect-ratio: 1 / 1 !important; /* Paksa rasio kotak sempurna */
-				background-color: #000 !important; /* Latar belakang hitam pekat terminal */
-				overflow: hidden !important; /* Kunci rahasia: potong animasi yang keluar lingkaran */
-				border: 2px solid rgba(0, 240, 255, 0.4); /* Bingkai neon tipis */
-				position: relative;
+			/* 1. MENGHAPUS LINGKARAN HITAM BAWAAN TEMPLATE */
+			.wrapper.spotlight .image.holo-container {
+				background: transparent !important;
+				border: none !important;
+				border-radius: 0 !important;
+				box-shadow: none !important;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				perspective: 1200px; /* Jarak pandang kamera 3D */
+				overflow: visible !important;
+				width: 250px !important;
 			}
 
-			/* 2. Wadah dasar untuk hujan kode biner */
-			.matrix-rain {
+			/* ======================================= */
+			/* HOLOGRAM 1: QUANTUM CORE (NOMOR 2)      */
+			/* ======================================= */
+			.holo-core {
+				position: relative;
+				width: 150px;
+				height: 150px;
+				transform-style: preserve-3d;
+				animation: spin3D 12s linear infinite;
+			}
+			
+			/* Cincin Energi Pelindung */
+			.holo-ring {
+				position: absolute;
 				width: 100%;
 				height: 100%;
+				border: 2px dashed rgba(0, 240, 255, 0.6);
+				border-radius: 50%;
+				box-shadow: 0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.3);
+			}
+			.holo-ring.x { transform: rotateX(70deg) rotateY(0deg); border-style: solid; border-width: 1px;}
+			.holo-ring.y { transform: rotateX(0deg) rotateY(70deg); }
+			.holo-ring.z { transform: rotateX(45deg) rotateY(45deg); border: 2px dotted rgba(0, 240, 255, 0.8);}
+
+			/* Kubus Data Melayang di Tengah */
+			.holo-cube {
 				position: absolute;
-				top: 0; left: 0;
-				display: flex; /* Taruh kolom secara horizontal */
-				font-family: 'Courier New', Courier, monospace; /* Font monospace biar lurus */
-				font-weight: 700;
-				font-size: 1.2em; /* Ukuran angka biner */
-				user-select: none;
-				pointer-events: none;
-				
-				/* Pengaturan agar teks jatuh vertikal tapi karakternya hadap tegak */
-				writing-mode: vertical-rl;
-				text-orientation: upright;
-				line-height: 1.0;
-				letter-spacing: -2px; /* Rapatkan karakter agar lebih padat */
+				top: 30%; left: 30%;
+				width: 40%; height: 40%;
+				transform-style: preserve-3d;
+				animation: counterSpin 6s linear infinite;
+			}
+			.holo-cube .face {
+				position: absolute;
+				width: 100%; height: 100%;
+				background: rgba(0, 240, 255, 0.1);
+				border: 1px solid rgba(0, 240, 255, 0.9);
+				box-shadow: 0 0 20px rgba(0, 240, 255, 0.5) inset;
+				backdrop-filter: blur(2px);
+			}
+			/* Pemosisi Sisi Kubus */
+			.face.front  { transform: translateZ(30px); }
+			.face.back   { transform: rotateY(180deg) translateZ(30px); }
+			.face.right  { transform: rotateY(90deg) translateZ(30px); }
+			.face.left   { transform: rotateY(-90deg) translateZ(30px); }
+			.face.top    { transform: rotateX(90deg) translateZ(30px); }
+			.face.bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+			/* ======================================= */
+			/* HOLOGRAM 2: RADAR SCANNER (NOMOR 3)     */
+			/* ======================================= */
+			.holo-radar-wrapper {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				transform-style: preserve-3d;
+				transform: rotateX(55deg) rotateZ(30deg); /* Miring ala Meja Hologram */
+			}
+			.holo-radar {
+				position: relative;
+				width: 200px;
+				height: 200px;
+				border-radius: 50%;
+				border: 2px solid rgba(0, 240, 255, 0.5);
+				box-shadow: 0 0 30px rgba(0, 240, 255, 0.2), inset 0 0 40px rgba(0, 240, 255, 0.1);
+				background: 
+					linear-gradient(rgba(0,240,255,0.2) 1px, transparent 1px) center,
+					linear-gradient(90deg, rgba(0,240,255,0.2) 1px, transparent 1px) center;
+				background-size: 20px 20px;
+			}
+			
+			/* Efek Pemindai Muter */
+			.radar-sweep {
+				position: absolute;
+				top: 0; left: 0; width: 100%; height: 100%;
+				border-radius: 50%;
+				background: conic-gradient(from 0deg, transparent 70%, rgba(0, 240, 255, 0.8) 100%);
+				animation: radarSpin 2s linear infinite;
+			}
+			
+			/* Titik Data Proyek */
+			.radar-dot {
+				position: absolute;
+				width: 6px; height: 6px;
+				background: #fff;
+				border-radius: 50%;
+				box-shadow: 0 0 10px #fff, 0 0 20px #00f0ff;
+				animation: blink 2s infinite;
+			}
+			.radar-dot.d1 { top: 30%; left: 40%; animation-delay: 0.5s; }
+			.radar-dot.d2 { top: 60%; left: 70%; animation-delay: 1.2s; }
+			.radar-dot.d3 { top: 75%; left: 25%; animation-delay: 0.8s; }
+
+			/* Teks Melayang di Atas Radar */
+			.holo-text {
+				margin-top: 20px;
+				color: #00f0ff;
+				font-family: 'Courier New', monospace;
+				font-weight: bold;
+				font-size: 0.9em;
+				text-shadow: 0 0 8px #00f0ff;
+				transform: rotateX(-55deg); /* Berdiri tegak lawan kemiringan radar */
+				animation: textGlitch 3s infinite;
 			}
 
-			/* 3. Gaya dan Animasi untuk setiap kolom (span) biner */
-			.matrix-rain span {
-				position: absolute;
-				top: -100%; /* Mulai dari atas bingkai (sembunyi) */
-				
-				/* Posisi horizontal dinamis berdasarkan variabel --c (kolom) */
-				/* Kita bagi 10 kolom secara merata */
-				left: calc((var(--c) - 1) * 10%); 
-				
-				white-space: nowrap; /* Jangan biarkan teks bungkus */
-				color: rgba(0, 240, 255, 0.9); /* Warna Cyan Neon Utama */
-				
-				/* Efek glow agar angka biner menyala */
-				text-shadow: 
-					0 0 5px rgba(0, 240, 255, 0.8),
-					0 0 10px rgba(0, 240, 255, 0.6);
-					
-				/* Panggil animasi matrix-fall */
-				animation-name: matrix-fall;
-				animation-duration: 3s; /* Kecepatan jatuh */
-				animation-timing-function: linear; /* Kecepatan konstan */
-				animation-iteration-count: infinite; /* Berputar selamanya */
-				
-				/* Delay dinamis berdasarkan variabel --d agar jatuhnya acak */
-				animation-delay: var(--d);
+			/* ======================================= */
+			/* ANIMASI KUNCI (KEYFRAMES)               */
+			/* ======================================= */
+			@keyframes spin3D {
+				0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+				100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
 			}
-
-			/* 4. Animasi: Teks jatuh dari atas ke bawah + memudar di akhir */
-			@keyframes matrix-fall {
-				0% {
-					transform: translateY(0%);
-					opacity: 0;
-				}
-				5% {
-					opacity: 1; /* Cepat muncul */
-				}
-				80% {
-					opacity: 1;
-				}
-				100% {
-					transform: translateY(200%); /* Jatuh sampai jauh ke bawah */
-					opacity: 0; /* Memudar hilang */
-				}
+			@keyframes counterSpin {
+				0% { transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg); }
+				100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+			}
+			@keyframes radarSpin { 100% { transform: rotate(360deg); } }
+			@keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; transform: scale(1.5); } }
+			@keyframes textGlitch {
+				0%, 96%, 100% { opacity: 1; transform: rotateX(-55deg) translateZ(0); }
+				98% { opacity: 0.5; transform: rotateX(-55deg) translateZ(5px); }
 			}
 		</style>
 	</head>
@@ -214,21 +276,19 @@
 <!-- Two -->
 <section id="two" class="wrapper alt spotlight style2">
 	<div class="inner">
-		<a href="#" class="image binary-matrix">
-    <div class="matrix-rain">
-        <!-- 10 kolom hujan biner dengan delay acak biar keren -->
-        <span style="--c: 1; --d: 0s;">101100110101101</span>
-        <span style="--c: 2; --d: 1s;">011011010111001</span>
-        <span style="--c: 3; --d: 0.5s;">111001011001101</span>
-        <span style="--c: 4; --d: 1.5s;">100110110101100</span>
-        <span style="--c: 5; --d: 0.2s;">011011100110010</span>
-        <span style="--c: 6; --d: 1.2s;">110111001001011</span>
-        <span style="--c: 7; --d: 0.8s;">010110011011100</span>
-        <span style="--c: 8; --d: 0.4s;">101110011001011</span>
-        <span style="--c: 9; --d: 1.8s;">110010101101110</span>
-        <span style="--c: 10; --d: 1.1s;">111001010101100</span>
-    </div>
-</a>
+		<!-- Hologram 1: Quantum Core 3D -->
+		<div class="image holo-container">
+			<div class="holo-core">
+				<div class="holo-ring x"></div>
+				<div class="holo-ring y"></div>
+				<div class="holo-ring z"></div>
+				<div class="holo-cube">
+					<div class="face front"></div><div class="face back"></div>
+					<div class="face right"></div><div class="face left"></div>
+					<div class="face top"></div><div class="face bottom"></div>
+				</div>
+			</div>
+		</div>
 		<div class="content">
 			<h2 class="major">Fokus saat ini (<i>CURRENT FOCUS</i>)</h2>
 			
@@ -254,21 +314,19 @@
 <!-- Three -->
 <section id="three" class="wrapper spotlight style3">
 	<div class="inner">
-		<a href="#" class="image binary-matrix">
-    <div class="matrix-rain">
-        <!-- 10 kolom hujan biner dengan delay acak biar keren -->
-        <span style="--c: 1; --d: 0s;">101100110101101</span>
-        <span style="--c: 2; --d: 1s;">011011010111001</span>
-        <span style="--c: 3; --d: 0.5s;">111001011001101</span>
-        <span style="--c: 4; --d: 1.5s;">100110110101100</span>
-        <span style="--c: 5; --d: 0.2s;">011011100110010</span>
-        <span style="--c: 6; --d: 1.2s;">110111001001011</span>
-        <span style="--c: 7; --d: 0.8s;">010110011011100</span>
-        <span style="--c: 8; --d: 0.4s;">101110011001011</span>
-        <span style="--c: 9; --d: 1.8s;">110010101101110</span>
-        <span style="--c: 10; --d: 1.1s;">111001010101100</span>
-    </div>
-</a>
+		<!-- Hologram 2: Radar Scanner 3D -->
+		<div class="image holo-container">
+			<div class="holo-radar-wrapper">
+				<div class="holo-radar">
+					<div class="radar-grid"></div>
+					<div class="radar-sweep"></div>
+					<div class="radar-dot d1"></div>
+					<div class="radar-dot d2"></div>
+					<div class="radar-dot d3"></div>
+				</div>
+				<div class="holo-text">SYS.SCAN_ACTIVE // PROJ_DETECTED</div>
+			</div>
+		</div>
 		<div class="content">
 			<h2 class="major">PENGALAMAN & PROYEK (<i>EXPERIENCE & PROJECTS</i>)</h2>
 			
