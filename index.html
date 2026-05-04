@@ -198,6 +198,50 @@
 				/* 7. Lari naik kembali ke Pojok Kiri Atas */
 				100% { top: -20px; left: 0%; transform: scale(0.7) scaleX(1); }
 			}
+			/* =================================================== */
+			/* FIX 1: ANIMASI KUBUS (Biar nggak berhenti)          */
+			/* =================================================== */
+			@keyframes spin3D {
+				0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+				100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+			}
+			@keyframes counterSpin {
+				0% { transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg); }
+				100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
+			}
+
+			/* =================================================== */
+			/* FIX 2: ANTI-LAG UNTUK HP (Mematikan efek berat)     */
+			/* =================================================== */
+			@media screen and (max-width: 736px) {
+				.holo-cube .face {
+					backdrop-filter: none !important; /* Ini biang kerok lag di HP */
+					box-shadow: 0 0 5px rgba(0, 240, 255, 0.5) inset !important; /* Dibikin ringan */
+				}
+			}
+
+			/* =================================================== */
+			/* FIX 3: MUNCULIN BADAN ANAK LARI                     */
+			/* =================================================== */
+			/* Membentuk Kepala & Badan dengan efek Neon Glow */
+			.c-head { width: 12px; height: 12px; border-radius: 50%; background: #00f0ff; position: absolute; top: 0; left: 9px; box-shadow: 0 0 15px #00f0ff, 0 0 5px #fff; }
+			.c-body { width: 4px; height: 22px; background: #00f0ff; position: absolute; top: 12px; left: 13px; box-shadow: 0 0 10px #00f0ff; }
+			
+			/* Membentuk Tangan & Kaki */
+			.c-arm, .c-leg { width: 4px; background: #00f0ff; position: absolute; border-radius: 2px; box-shadow: 0 0 10px #00f0ff; }
+			.c-arm { height: 16px; top: 14px; left: 13px; transform-origin: top center; }
+			.c-leg { height: 20px; top: 32px; left: 13px; transform-origin: top center; }
+
+			/* Menganimasikan Tangan & Kaki (Ayun Bergantian) */
+			.arm-1 { animation: swingArm 0.5s infinite alternate ease-in-out; }
+			.arm-2 { animation: swingArmRev 0.5s infinite alternate ease-in-out; }
+			.leg-1 { animation: swingLegRev 0.5s infinite alternate ease-in-out; }
+			.leg-2 { animation: swingLeg 0.5s infinite alternate ease-in-out; }
+
+			@keyframes swingArm { 0% { transform: rotate(-60deg); } 100% { transform: rotate(60deg); } }
+			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
+			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
+			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
 		</style>
 	</head>
 	</head>
