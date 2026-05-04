@@ -137,79 +137,69 @@
 			.face.top    { transform: rotateX(90deg) translateZ(30px); }
 			.face.bottom { transform: rotateX(-90deg) translateZ(30px); }
 
+		/* ======================================= */
+			/* HOLOGRAM 3: CYBER RUNNER (ANAK LARI)    */
 			/* ======================================= */
-			/* HOLOGRAM 2: RADAR SCANNER (NOMOR 3)     */
-			/* ======================================= */
-			.holo-radar-wrapper {
-				display: flex;
-				flex-direction: column;
-				align-items: center;
-				transform-style: preserve-3d;
-				transform: rotateX(55deg) rotateZ(30deg); /* Miring ala Meja Hologram */
-			}
-			.holo-radar {
+			
+			/* Area bermain si anak hologram */
+			.holo-run-area {
 				position: relative;
-				width: 200px;
-				height: 200px;
+				width: 180px;
+				height: 180px;
+				display: flex;
+				justify-content: center;
+				align-items: center;
 				border-radius: 50%;
-				border: 2px solid rgba(0, 240, 255, 0.5);
-				box-shadow: 0 0 30px rgba(0, 240, 255, 0.2), inset 0 0 40px rgba(0, 240, 255, 0.1);
+				/* Efek grid lantai virtual agar terasa 3D */
 				background: 
-					linear-gradient(rgba(0,240,255,0.2) 1px, transparent 1px) center,
-					linear-gradient(90deg, rgba(0,240,255,0.2) 1px, transparent 1px) center;
+					linear-gradient(rgba(0,240,255,0.1) 1px, transparent 1px) center,
+					linear-gradient(90deg, rgba(0,240,255,0.1) 1px, transparent 1px) center;
 				background-size: 20px 20px;
+				box-shadow: inset 0 0 40px rgba(0, 240, 255, 0.1);
+				overflow: visible; /* Biar larinya bisa tembus keluar lingkaran dikit */
 			}
 			
-			/* Efek Pemindai Muter */
-			.radar-sweep {
+			/* Wadah tubuh anak */
+			.cyber-kid {
 				position: absolute;
-				top: 0; left: 0; width: 100%; height: 100%;
-				border-radius: 50%;
-				background: conic-gradient(from 0deg, transparent 70%, rgba(0, 240, 255, 0.8) 100%);
-				animation: radarSpin 2s linear infinite;
+				width: 30px; 
+				height: 50px;
+				/* Panggil animasi lari ke bawah */
+				animation: runDiagDown 3s linear infinite; 
 			}
 			
-			/* Titik Data Proyek */
-			.radar-dot {
-				position: absolute;
-				width: 6px; height: 6px;
-				background: #fff;
-				border-radius: 50%;
-				box-shadow: 0 0 10px #fff, 0 0 20px #00f0ff;
-				animation: blink 2s infinite;
-			}
-			.radar-dot.d1 { top: 30%; left: 40%; animation-delay: 0.5s; }
-			.radar-dot.d2 { top: 60%; left: 70%; animation-delay: 1.2s; }
-			.radar-dot.d3 { top: 75%; left: 25%; animation-delay: 0.8s; }
+			/* Membentuk Kepala & Badan dengan efek Neon Glow */
+			.c-head { width: 12px; height: 12px; border-radius: 50%; background: #00f0ff; position: absolute; top: 0; left: 9px; box-shadow: 0 0 15px #00f0ff, 0 0 5px #fff; }
+			.c-body { width: 4px; height: 22px; background: #00f0ff; position: absolute; top: 12px; left: 13px; box-shadow: 0 0 10px #00f0ff; }
+			
+			/* Membentuk Tangan & Kaki */
+			.c-arm, .c-leg { width: 4px; background: #00f0ff; position: absolute; border-radius: 2px; box-shadow: 0 0 10px #00f0ff; }
+			.c-arm { height: 16px; top: 14px; left: 13px; transform-origin: top center; }
+			.c-leg { height: 20px; top: 32px; left: 13px; transform-origin: top center; }
 
-			/* Teks Melayang di Atas Radar */
-			.holo-text {
-				margin-top: 20px;
-				color: #00f0ff;
-				font-family: 'Courier New', monospace;
-				font-weight: bold;
-				font-size: 0.9em;
-				text-shadow: 0 0 8px #00f0ff;
-				transform: rotateX(-55deg); /* Berdiri tegak lawan kemiringan radar */
-				animation: textGlitch 3s infinite;
-			}
+			/* Menganimasikan Tangan & Kaki (Ayun Bergantian) */
+			.arm-1 { animation: swingArm 0.5s infinite alternate ease-in-out; }
+			.arm-2 { animation: swingArmRev 0.5s infinite alternate ease-in-out; }
+			.leg-1 { animation: swingLegRev 0.5s infinite alternate ease-in-out; }
+			.leg-2 { animation: swingLeg 0.5s infinite alternate ease-in-out; }
 
-			/* ======================================= */
-			/* ANIMASI KUNCI (KEYFRAMES)               */
-			/* ======================================= */
-			@keyframes spin3D {
-				0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
-				100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
-			}
-			@keyframes counterSpin {
-				0% { transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg); }
-				100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
-			}
-			@keyframes radarSpin { 100% { transform: rotate(360deg); } }
-			@keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; transform: scale(1.5); } }
-			@keyframes textGlitch {
-				0%, 96%, 100% { opacity: 1; transform: rotateX(-55deg) translateZ(0); }
-				98% { opacity: 0.5; transform: rotateX(-55deg) translateZ(5px); }
+			@keyframes swingArm { 0% { transform: rotate(-60deg); } 100% { transform: rotate(60deg); } }
+			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
+			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
+			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
+			
+			/* Animasi Utama: Lari Serong ke Bawah & Membesar */
+			@keyframes runDiagDown {
+				0% { 
+					transform: translate(-60px, -60px) scale(0.6); /* Mulai dari kiri atas, jauh (kecil) */
+					opacity: 0; 
+				}
+				10% { opacity: 1; } /* Muncul */
+				80% { opacity: 1; }
+				100% { 
+					transform: translate(60px, 60px) scale(1.3); /* Berakhir di kanan bawah, dekat (besar) */
+					opacity: 0; /* Menghilang */
+				}
 			}
 		</style>
 	</head>
@@ -314,17 +304,19 @@
 <!-- Three -->
 <section id="three" class="wrapper spotlight style3">
 	<div class="inner">
-		<!-- Hologram 2: Radar Scanner 3D -->
+		<!-- Hologram 3: Cyber Runner (Anak Lari) -->
 		<div class="image holo-container">
-			<div class="holo-radar-wrapper">
-				<div class="holo-radar">
-					<div class="radar-grid"></div>
-					<div class="radar-sweep"></div>
-					<div class="radar-dot d1"></div>
-					<div class="radar-dot d2"></div>
-					<div class="radar-dot d3"></div>
+			<div class="holo-run-area">
+				<div class="cyber-kid">
+					<div class="c-head"></div>
+					<div class="c-body"></div>
+					<div class="c-arm arm-1"></div>
+					<div class="c-arm arm-2"></div>
+					<div class="c-leg leg-1"></div>
+					<div class="c-leg leg-2"></div>
 				</div>
-				<div class="holo-text">SYS.SCAN_ACTIVE // PROJ_DETECTED</div>
+				<!-- Teks hologram di bagian bawah area -->
+				<div class="holo-text" style="position: absolute; bottom: -30px; width: 200px; text-align: center;">SYS.RUN // TARGET_AQUIRED</div>
 			</div>
 		</div>
 		<div class="content">
