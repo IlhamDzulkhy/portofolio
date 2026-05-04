@@ -72,57 +72,82 @@
 				object-fit: cover !important;
 			}
 			/* =================================================== */
-			/* EFEK ANIMASI LINGKARAN (PENGGANTI FOTO)             */
+			/* EFEK ANIMASI HUJAN BINER (BINARY MATRIX RAIN)       */
 			/* =================================================== */
 			
-			/* Wadah dasar (Background gelap pengganti foto) */
-			.anim-bg {
-				display: flex !important;
-				justify-content: center;
-				align-items: center;
-				background-color: #1a1c24 !important; /* Warna gelap terminal */
-				aspect-ratio: 1 / 1 !important;
+			/* 1. Membuat bingkai lingkaran gelap & mask agar animasi terpotong rapi */
+			.image.binary-matrix {
+				border-radius: 50% !important; /* Paksa jadi lingkaran sempurna */
+				aspect-ratio: 1 / 1 !important; /* Paksa rasio kotak sempurna */
+				background-color: #000 !important; /* Latar belakang hitam pekat terminal */
+				overflow: hidden !important; /* Kunci rahasia: potong animasi yang keluar lingkaran */
+				border: 2px solid rgba(0, 240, 255, 0.4); /* Bingkai neon tipis */
 				position: relative;
-				overflow: hidden;
-				border: 2px solid rgba(0, 240, 255, 0.2);
 			}
 
-			/* --- Animasi 1: Cyber Orb (Berdetak/Pulsing) --- */
-			.cyber-orb {
-				width: 50%;
-				height: 50%;
-				background: radial-gradient(circle, #00f0ff 10%, transparent 70%);
-				border-radius: 50%;
-				box-shadow: 0 0 40px #00f0ff, inset 0 0 20px #00f0ff;
-				animation: pulse 1.5s infinite alternate ease-in-out;
-			}
-			@keyframes pulse {
-				0% { transform: scale(0.8); opacity: 0.5; }
-				100% { transform: scale(1.2); opacity: 1; }
-			}
-
-			/* --- Animasi 2: Spinning Rings (Berputar) --- */
-			.ring {
+			/* 2. Wadah dasar untuk hujan kode biner */
+			.matrix-rain {
+				width: 100%;
+				height: 100%;
 				position: absolute;
-				border-radius: 50%;
+				top: 0; left: 0;
+				display: flex; /* Taruh kolom secara horizontal */
+				font-family: 'Courier New', Courier, monospace; /* Font monospace biar lurus */
+				font-weight: 700;
+				font-size: 1.2em; /* Ukuran angka biner */
+				user-select: none;
+				pointer-events: none;
+				
+				/* Pengaturan agar teks jatuh vertikal tapi karakternya hadap tegak */
+				writing-mode: vertical-rl;
+				text-orientation: upright;
+				line-height: 1.0;
+				letter-spacing: -2px; /* Rapatkan karakter agar lebih padat */
 			}
-			.ring-outer {
-				width: 75%;
-				height: 75%;
-				border: 3px dashed #00f0ff;
-				animation: spin 6s linear infinite;
+
+			/* 3. Gaya dan Animasi untuk setiap kolom (span) biner */
+			.matrix-rain span {
+				position: absolute;
+				top: -100%; /* Mulai dari atas bingkai (sembunyi) */
+				
+				/* Posisi horizontal dinamis berdasarkan variabel --c (kolom) */
+				/* Kita bagi 10 kolom secara merata */
+				left: calc((var(--c) - 1) * 10%); 
+				
+				white-space: nowrap; /* Jangan biarkan teks bungkus */
+				color: rgba(0, 240, 255, 0.9); /* Warna Cyan Neon Utama */
+				
+				/* Efek glow agar angka biner menyala */
+				text-shadow: 
+					0 0 5px rgba(0, 240, 255, 0.8),
+					0 0 10px rgba(0, 240, 255, 0.6);
+					
+				/* Panggil animasi matrix-fall */
+				animation-name: matrix-fall;
+				animation-duration: 3s; /* Kecepatan jatuh */
+				animation-timing-function: linear; /* Kecepatan konstan */
+				animation-iteration-count: infinite; /* Berputar selamanya */
+				
+				/* Delay dinamis berdasarkan variabel --d agar jatuhnya acak */
+				animation-delay: var(--d);
 			}
-			.ring-inner {
-				width: 50%;
-				height: 50%;
-				border: 3px dotted #ffffff;
-				animation: spin-reverse 4s linear infinite;
-			}
-			@keyframes spin {
-				100% { transform: rotate(360deg); }
-			}
-			@keyframes spin-reverse {
-				100% { transform: rotate(-360deg); }
+
+			/* 4. Animasi: Teks jatuh dari atas ke bawah + memudar di akhir */
+			@keyframes matrix-fall {
+				0% {
+					transform: translateY(0%);
+					opacity: 0;
+				}
+				5% {
+					opacity: 1; /* Cepat muncul */
+				}
+				80% {
+					opacity: 1;
+				}
+				100% {
+					transform: translateY(200%); /* Jatuh sampai jauh ke bawah */
+					opacity: 0; /* Memudar hilang */
+				}
 			}
 		</style>
 	</head>
@@ -189,8 +214,20 @@
 <!-- Two -->
 <section id="two" class="wrapper alt spotlight style2">
 	<div class="inner">
-		<a href="#" class="image anim-bg">
-    <div class="cyber-orb"></div>
+		<a href="#" class="image binary-matrix">
+    <div class="matrix-rain">
+        <!-- 10 kolom hujan biner dengan delay acak biar keren -->
+        <span style="--c: 1; --d: 0s;">101100110101101</span>
+        <span style="--c: 2; --d: 1s;">011011010111001</span>
+        <span style="--c: 3; --d: 0.5s;">111001011001101</span>
+        <span style="--c: 4; --d: 1.5s;">100110110101100</span>
+        <span style="--c: 5; --d: 0.2s;">011011100110010</span>
+        <span style="--c: 6; --d: 1.2s;">110111001001011</span>
+        <span style="--c: 7; --d: 0.8s;">010110011011100</span>
+        <span style="--c: 8; --d: 0.4s;">101110011001011</span>
+        <span style="--c: 9; --d: 1.8s;">110010101101110</span>
+        <span style="--c: 10; --d: 1.1s;">111001010101100</span>
+    </div>
 </a>
 		<div class="content">
 			<h2 class="major">Fokus saat ini (<i>CURRENT FOCUS</i>)</h2>
@@ -217,9 +254,20 @@
 <!-- Three -->
 <section id="three" class="wrapper spotlight style3">
 	<div class="inner">
-		<a href="#" class="image anim-bg">
-    <div class="ring ring-outer"></div>
-    <div class="ring ring-inner"></div>
+		<a href="#" class="image binary-matrix">
+    <div class="matrix-rain">
+        <!-- 10 kolom hujan biner dengan delay acak biar keren -->
+        <span style="--c: 1; --d: 0s;">101100110101101</span>
+        <span style="--c: 2; --d: 1s;">011011010111001</span>
+        <span style="--c: 3; --d: 0.5s;">111001011001101</span>
+        <span style="--c: 4; --d: 1.5s;">100110110101100</span>
+        <span style="--c: 5; --d: 0.2s;">011011100110010</span>
+        <span style="--c: 6; --d: 1.2s;">110111001001011</span>
+        <span style="--c: 7; --d: 0.8s;">010110011011100</span>
+        <span style="--c: 8; --d: 0.4s;">101110011001011</span>
+        <span style="--c: 9; --d: 1.8s;">110010101101110</span>
+        <span style="--c: 10; --d: 1.1s;">111001010101100</span>
+    </div>
 </a>
 		<div class="content">
 			<h2 class="major">PENGALAMAN & PROYEK (<i>EXPERIENCE & PROJECTS</i>)</h2>
