@@ -71,6 +71,59 @@
 				aspect-ratio: 1 / 1 !important;
 				object-fit: cover !important;
 			}
+			/* =================================================== */
+			/* EFEK ANIMASI LINGKARAN (PENGGANTI FOTO)             */
+			/* =================================================== */
+			
+			/* Wadah dasar (Background gelap pengganti foto) */
+			.anim-bg {
+				display: flex !important;
+				justify-content: center;
+				align-items: center;
+				background-color: #1a1c24 !important; /* Warna gelap terminal */
+				aspect-ratio: 1 / 1 !important;
+				position: relative;
+				overflow: hidden;
+				border: 2px solid rgba(0, 240, 255, 0.2);
+			}
+
+			/* --- Animasi 1: Cyber Orb (Berdetak/Pulsing) --- */
+			.cyber-orb {
+				width: 50%;
+				height: 50%;
+				background: radial-gradient(circle, #00f0ff 10%, transparent 70%);
+				border-radius: 50%;
+				box-shadow: 0 0 40px #00f0ff, inset 0 0 20px #00f0ff;
+				animation: pulse 1.5s infinite alternate ease-in-out;
+			}
+			@keyframes pulse {
+				0% { transform: scale(0.8); opacity: 0.5; }
+				100% { transform: scale(1.2); opacity: 1; }
+			}
+
+			/* --- Animasi 2: Spinning Rings (Berputar) --- */
+			.ring {
+				position: absolute;
+				border-radius: 50%;
+			}
+			.ring-outer {
+				width: 75%;
+				height: 75%;
+				border: 3px dashed #00f0ff;
+				animation: spin 6s linear infinite;
+			}
+			.ring-inner {
+				width: 50%;
+				height: 50%;
+				border: 3px dotted #ffffff;
+				animation: spin-reverse 4s linear infinite;
+			}
+			@keyframes spin {
+				100% { transform: rotate(360deg); }
+			}
+			@keyframes spin-reverse {
+				100% { transform: rotate(-360deg); }
+			}
 		</style>
 	</head>
 	</head>
@@ -136,7 +189,9 @@
 <!-- Two -->
 <section id="two" class="wrapper alt spotlight style2">
 	<div class="inner">
-		<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
+		<a href="#" class="image anim-bg">
+    <div class="cyber-orb"></div>
+</a>
 		<div class="content">
 			<h2 class="major">Fokus saat ini (<i>CURRENT FOCUS</i>)</h2>
 			
@@ -162,7 +217,10 @@
 <!-- Three -->
 <section id="three" class="wrapper spotlight style3">
 	<div class="inner">
-		<a href="#" class="image"><img src="images/pic03.jpg" alt="Experience and Projects" /></a>
+		<a href="#" class="image anim-bg">
+    <div class="ring ring-outer"></div>
+    <div class="ring ring-inner"></div>
+</a>
 		<div class="content">
 			<h2 class="major">PENGALAMAN & PROYEK (<i>EXPERIENCE & PROJECTS</i>)</h2>
 			
