@@ -242,26 +242,39 @@
 			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
 			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
 			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
-								/* =================================================== */
-			/* PENYESUAIAN POSISI HOLOGRAM KHUSUS DI HP            */
+											/* =================================================== */
+			/* FIX FINAL: POSISI MEPET KIRI & KANAN PRESISI        */
 			/* =================================================== */
 			
-			/* Kembalikan posisi normal di Laptop (Hapus efek geser margin sebelumnya) */
-			#two .image.holo-container { margin-right: 0 !important; }
-			#three .image.holo-container { margin-left: 0 !important; }
+			/* 1. Kembalikan ukuran area hologram sebesar lingkaran asli template */
+			.wrapper.spotlight .image.holo-container {
+				width: 22em !important; 
+			}
 
-			/* Aturan ini hanya berjalan di layar HP (maksimal lebar 736px) */
+			/* 2. Nomor 2: Mepet mentok ke KIRI (di Laptop) */
+			#two .image.holo-container {
+				justify-content: flex-start !important; 
+				transform: none !important;
+				margin: 0 !important;
+			}
+
+			/* 3. Nomor 3: Mepet mentok ke KANAN (di Laptop) */
+			#three .image.holo-container {
+				justify-content: flex-end !important; 
+				transform: none !important;
+				margin: 0 !important;
+			}
+
+			/* 4. Khusus layar HP: Otomatis di tengah semua biar rapi */
 			@media screen and (max-width: 736px) {
-				/* Hologram 2 (Fokus) Geser ke KIRI di HP */
-				#two .image.holo-container {
-					margin: 0 auto 2em auto !important; 
-					transform: translateX(-30px) !important; /* Minus = geser kiri */
+				.wrapper.spotlight .image.holo-container {
+					width: 100% !important; /* Pakai lebar penuh di HP */
 				}
-
-				/* Hologram 3 (Pengalaman) Geser ke KANAN di HP */
+				#two .image.holo-container, 
 				#three .image.holo-container {
+					justify-content: center !important; /* Paksa posisi ke tengah */
 					margin: 0 auto 2em auto !important;
-					transform: translateX(30px) !important; /* Plus = geser kanan */
+					transform: none !important; /* Hapus efek geser paksa */
 				}
 			}
 
