@@ -242,41 +242,27 @@
 			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
 			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
 			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
-											/* =================================================== */
-			/* FIX FINAL: POSISI MEPET KIRI & KANAN PRESISI        */
+									/* =================================================== */
+			/* FIX POSISI KHUSUS HP: NO 2 KIRI, NO 3 KANAN         */
 			/* =================================================== */
-			
-			/* 1. Kembalikan ukuran area hologram sebesar lingkaran asli template */
-			.wrapper.spotlight .image.holo-container {
-				width: 22em !important; 
-			}
-
-			/* 2. Nomor 2: Mepet mentok ke KIRI (di Laptop) */
-			#two .image.holo-container {
-				justify-content: flex-start !important; 
-				transform: none !important;
-				margin: 0 !important;
-			}
-
-			/* 3. Nomor 3: Mepet mentok ke KANAN (di Laptop) */
-			#three .image.holo-container {
-				justify-content: flex-end !important; 
-				transform: none !important;
-				margin: 0 !important;
-			}
-
-			/* 4. Khusus layar HP: Otomatis di tengah semua biar rapi */
 			@media screen and (max-width: 736px) {
-				.wrapper.spotlight .image.holo-container {
-					width: 100% !important; /* Pakai lebar penuh di HP */
+				/* Hologram 2 (Fokus) mepet mentok KIRI di HP */
+				#two .image.holo-container {
+					width: 100% !important;
+					justify-content: flex-start !important; 
+					transform: none !important;
+					margin: 0 0 2em 0 !important;
 				}
-				#two .image.holo-container, 
+
+				/* Hologram 3 (Pengalaman) mepet mentok KANAN di HP */
 				#three .image.holo-container {
-					justify-content: center !important; /* Paksa posisi ke tengah */
-					margin: 0 auto 2em auto !important;
-					transform: none !important; /* Hapus efek geser paksa */
+					width: 100% !important;
+					justify-content: flex-end !important; 
+					transform: none !important;
+					margin: 0 0 2em 0 !important;
 				}
 			}
+
 
 
 		</style>
