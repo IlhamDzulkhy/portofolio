@@ -242,6 +242,28 @@
 			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
 			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
 			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
+					/* =================================================== */
+			/* PENYESUAIAN POSISI HOLOGRAM (GESER KIRI & KANAN)    */
+			/* =================================================== */
+			
+			/* Geser Hologram Nomor 2 (Fokus) agar lebih ke KIRI */
+			#two .image.holo-container {
+				margin-right: 60px !important; /* Semakin besar angkanya, semakin geser ke kiri */
+			}
+
+			/* Geser Hologram Nomor 3 (Pengalaman) agar lebih ke KANAN */
+			#three .image.holo-container {
+				margin-left: 60px !important; /* Semakin besar angkanya, semakin geser ke kanan */
+			}
+
+			/* Perbaikan tampilan di HP agar tetap di tengah */
+			@media screen and (max-width: 736px) {
+				#two .image.holo-container, 
+				#three .image.holo-container {
+					margin: 0 auto 2em auto !important; /* Kembalikan ke tengah kalau di HP */
+				}
+			}
+
 		</style>
 	</head>
 	</head>
