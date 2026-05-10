@@ -1,12 +1,7 @@
 <!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
-		<title>Generic - Solid State by HTML5 UP</title>
+		<title>Album Organisasi</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
@@ -14,116 +9,85 @@
 	</head>
 	<body class="is-preload">
 
-		<!-- Page Wrapper -->
-			<div id="page-wrapper">
+		<div id="page-wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="index.html">Solid State</a></h1>
+				<header id="header">
+						<h1><a href="index.html">Portofolio</a></h1>
 						<nav>
 							<a href="#menu">Menu</a>
 						</nav>
 					</header>
 
-				<!-- Menu -->
-					<nav id="menu">
+				<nav id="menu">
 						<div class="inner">
 							<h2>Menu</h2>
 							<ul class="links">
 								<li><a href="index.html">Home</a></li>
 								<li><a href="generic.html">Generic</a></li>
 								<li><a href="elements.html">Elements</a></li>
-								<li><a href="#">Log In</a></li>
-								<li><a href="#">Sign Up</a></li>
 							</ul>
 							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
 
-				<!-- Wrapper -->
-					<section id="wrapper">
+				<section id="wrapper">
 						<header>
 							<div class="inner">
-								<h2>Generic</h2>
-								<p>Phasellus non pulvinar erat. Fusce tincidunt nisl eget ipsum.</p>
+								<h2>Galeri Organisasi</h2>
+								<p>Kumpulan dokumentasi kegiatan organisasi Ilham Dzulkhy</p>
 							</div>
 						</header>
 
-						<!-- Content -->
-							<div class="wrapper">
+						<div class="wrapper">
 								<div class="inner">
 
 									<h2 class="major">Album: Organisasi</h2>
-<p>Dokumentasi berbagai kegiatan dan pengalaman organisasi saya.</p>
+									<p>Dokumentasi berbagai kegiatan dan pengalaman organisasi saya.</p>
 
-<style>
-	.galeri-otomatis { column-count: 3; column-gap: 15px; padding: 20px 0; }
-	.galeri-otomatis img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; display: block; box-shadow: 0 4px 10px rgba(0, 240, 255, 0.1); transition: 0.3s; }
-	.galeri-otomatis img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4); z-index: 10; }
-	@media (max-width: 736px) { .galeri-otomatis { column-count: 2; column-gap: 10px; } }
-</style>
+									<style>
+										.galeri-otomatis { column-count: 3; column-gap: 15px; padding: 20px 0; }
+										.galeri-otomatis img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; display: block; box-shadow: 0 4px 10px rgba(0, 240, 255, 0.1); transition: 0.3s; }
+										.galeri-otomatis img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4); z-index: 10; }
+										@media (max-width: 736px) { .galeri-otomatis { column-count: 2; column-gap: 10px; } }
+									</style>
 
-<div class="galeri-otomatis" id="wadah-album"></div>
+									<div class="galeri-otomatis" id="wadah-album"></div>
 
-<script>
-	const wadah = document.getElementById('wadah-album');
-	const totalFoto = 50; // UBAH ANGKA INI SESUAI JUMLAH FOTOMU DI FOLDER ORGANISASI
-	const namaFolder = 'images/organisasi/'; 
+									<script>
+										const wadah = document.getElementById('wadah-album');
+										const totalFoto = 50; // UBAH ANGKA INI SESUAI JUMLAH FOTOMU
+										const namaFolder = 'images/organisasi/'; 
 
-	for (let i = 1; i <= totalFoto; i++) {
-		wadah.innerHTML += `<img src="${namaFolder}foto (${i}).jpg" alt="Organisasi ${i}" loading="lazy" onerror="this.style.display='none'">`;
-	}
-</script>
+										for (let i = 1; i <= totalFoto; i++) {
+											wadah.innerHTML += `<img src="${namaFolder}foto (${i}).jpg" alt="Organisasi ${i}" loading="lazy" onerror="this.style.display='none'">`;
+										}
+									</script>
+
+								</div>
 							</div>
 
 					</section>
 
-				<!-- Footer -->
-					<section id="footer">
+				<section id="footer">
 						<div class="inner">
-							<h2 class="major">Get in touch</h2>
-							<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
-							<form method="post" action="#">
-								<div class="fields">
-									<div class="field">
-										<label for="name">Name</label>
-										<input type="text" name="name" id="name" />
-									</div>
-									<div class="field">
-										<label for="email">Email</label>
-										<input type="email" name="email" id="email" />
-									</div>
-									<div class="field">
-										<label for="message">Message</label>
-										<textarea name="message" id="message" rows="4"></textarea>
-									</div>
-								</div>
-								<ul class="actions">
-									<li><input type="submit" value="Send Message" /></li>
-								</ul>
-							</form>
+							<h2 class="major">Kontak <span style="font-size: 0.6em; font-weight: normal; text-transform: none; color: #ccc;">(Contact)</span></h2>
+							<p>Mari terhubung atau silakan sapa saya melalui tautan di bawah ini.<br>
+							<i style="color: #bbb;">Let's connect or feel free to say hello through the links below.</i></p>
+
 							<ul class="contact">
-								<li class="icon solid fa-home">
-									Untitled Inc<br />
-									1234 Somewhere Road Suite #2894<br />
-									Nashville, TN 00000-0000
-								</li>
-								<li class="icon solid fa-phone">(000) 000-0000</li>
-								<li class="icon solid fa-envelope"><a href="#">information@untitled.tld</a></li>
-								<li class="icon brands fa-twitter"><a href="#">twitter.com/untitled-tld</a></li>
-								<li class="icon brands fa-facebook-f"><a href="#">facebook.com/untitled-tld</a></li>
-								<li class="icon brands fa-instagram"><a href="#">instagram.com/untitled-tld</a></li>
+								<li class="icon solid fa-envelope"><a href="mailto:dzulkhyilham@gmail.com">dzulkhyilham@gmail.com</a></li>
+								<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/ilham-dzulkhy-643691406" target="_blank">LinkedIn Profile</a></li>
+								<li class="icon brands fa-instagram"><a href="https://instagram.com/dzulkhy018" target="_blank">@dzulkhy018</a></li>
 							</ul>
 							<ul class="copyright">
-								<li>&copy; Untitled Inc. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; 2026 Ilham Dzulkhy. All rights reserved.</li>
 							</ul>
 						</div>
 					</section>
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/browser.min.js"></script>
 			<script src="assets/js/breakpoints.min.js"></script>
