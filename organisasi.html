@@ -53,30 +53,27 @@
 							<div class="wrapper">
 								<div class="inner">
 
-									<h3 class="major">Lorem ipsum dolor</h3>
-									<p>Morbi mattis mi consectetur tortor elementum, varius pellentesque velit convallis. Aenean tincidunt lectus auctor mauris maximus, ac scelerisque ipsum tempor. Duis vulputate ex et ex tincidunt, quis lacinia velit aliquet. Duis non efficitur nisi, id malesuada justo. Maecenas sagittis felis ac sagittis semper. Curabitur purus leo donec vel dolor at arcu tincidunt bibendum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Fusce ut aliquet justo. Donec id neque ipsum. Integer eget ultricies odio. Nam vel ex a orci fringilla tincidunt. Aliquam eleifend ligula non velit accumsan cursus. Etiam ut gravida sapien.</p>
+									<h2 class="major">Album: Organisasi</h2>
+<p>Dokumentasi berbagai kegiatan dan pengalaman organisasi saya.</p>
 
-									<p>Vestibulum ultrices risus velit, sit amet blandit massa auctor sit amet. Sed eu lectus sem. Phasellus in odio at ipsum porttitor mollis id vel diam. Praesent sit amet posuere risus, eu faucibus lectus. Vivamus ex ligula, tempus pulvinar ipsum in, auctor porta quam. Proin nec commodo, vel scelerisque nisi scelerisque. Suspendisse id quam vel tortor tincidunt suscipit. Nullam auctor orci eu dolor consectetur, interdum ullamcorper ante tincidunt. Mauris felis nec felis elementum varius.</p>
+<style>
+	.galeri-otomatis { column-count: 3; column-gap: 15px; padding: 20px 0; }
+	.galeri-otomatis img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; display: block; box-shadow: 0 4px 10px rgba(0, 240, 255, 0.1); transition: 0.3s; }
+	.galeri-otomatis img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4); z-index: 10; }
+	@media (max-width: 736px) { .galeri-otomatis { column-count: 2; column-gap: 10px; } }
+</style>
 
-									<h3 class="major">Vitae phasellus</h3>
-									<p>Cras mattis ante fermentum, malesuada neque vitae, eleifend erat. Phasellus non pulvinar erat. Fusce tincidunt, nisl eget mattis egestas, purus ipsum consequat orci, sit amet lobortis lorem lacus in tellus. Sed ac elementum arcu. Quisque placerat auctor laoreet.</p>
+<div class="galeri-otomatis" id="wadah-album"></div>
 
-									<section class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic04.jpg" alt="" /></a>
-											<h3 class="major">Sed feugiat lorem</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic05.jpg" alt="" /></a>
-											<h3 class="major">Nisl placerat</h3>
-											<p>Lorem ipsum dolor sit amet, consectetur adipiscing vehicula id nulla dignissim dapibus ultrices.</p>
-											<a href="#" class="special">Learn more</a>
-										</article>
-									</section>
+<script>
+	const wadah = document.getElementById('wadah-album');
+	const totalFoto = 50; // UBAH ANGKA INI SESUAI JUMLAH FOTOMU DI FOLDER ORGANISASI
+	const namaFolder = 'images/organisasi/'; 
 
-								</div>
+	for (let i = 1; i <= totalFoto; i++) {
+		wadah.innerHTML += `<img src="${namaFolder}foto (${i}).jpg" alt="Organisasi ${i}" loading="lazy" onerror="this.style.display='none'">`;
+	}
+</script>
 							</div>
 
 					</section>
