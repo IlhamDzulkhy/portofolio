@@ -87,12 +87,29 @@
 
 			</div>
 
-		<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<script>
+										const wadah = document.getElementById('wadah-album');
+										
+										// Setingan Radar GitHub
+										const username = 'IlhamDzulkhy'; 
+										const repo = 'portofolio'; 
+										const namaFolder = 'organisasi'; // UBAH INI UNTUK FILE LAIN (prestasi, proyek, pengalaman)
 
+										// Mengaktifkan Radar API GitHub
+										const apiUrl = `https://api.github.com/repos/${username}/${repo}/contents/${namaFolder}`;
+
+										fetch(apiUrl)
+											.then(response => response.json())
+											.then(data => {
+												// Looping otomatis untuk semua file yang ketemu di folder
+												data.forEach(file => {
+													// Cek biar yang ditampilin beneran file gambar
+													if (file.type === 'file' && file.name.match(/\.(jpe?g|png|gif|webp)$/i)) {
+														wadah.innerHTML += `<img src="${file.download_url}" alt="${file.name}" loading="lazy">`;
+													}
+												});
+											})
+											.catch(error => console.error('Waduh, radarnya gagal:', error));
+									</script>
 	</body>
 </html>
