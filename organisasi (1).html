@@ -1,0 +1,172 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Album Organisasi</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<div id="page-wrapper">
+
+				<header id="header">
+						<h1><a href="index.html">Portofolio</a></h1>
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<nav id="menu">
+						<div class="inner">
+							<h2>Menu</h2>
+							<ul class="links">
+								<li><a href="index.html">Home</a></li>
+								<li><a href="generic.html">Generic</a></li>
+								<li><a href="elements.html">Elements</a></li>
+							</ul>
+							<a href="#" class="close">Close</a>
+						</div>
+					</nav>
+
+				<section id="wrapper">
+						<header>
+							<div class="inner">
+								<h2>Galeri Organisasi</h2>
+								<p>Kumpulan dokumentasi kegiatan organisasi Ilham Dzulkhy</p>
+							</div>
+						</header>
+
+						<div class="wrapper">
+								<div class="inner">
+
+									<h2 class="major">Album: Organisasi</h2>
+									<p>Dokumentasi berbagai kegiatan dan pengalaman organisasi saya.</p>
+
+									<style>
+										.galeri-otomatis { column-count: 3; column-gap: 15px; padding: 20px 0; }
+										.galeri-otomatis img { width: 100%; height: auto; border-radius: 8px; margin-bottom: 15px; display: block; box-shadow: 0 4px 10px rgba(0, 240, 255, 0.1); transition: 0.3s; cursor: pointer; }
+										.galeri-otomatis img:hover { transform: scale(1.03); box-shadow: 0 8px 20px rgba(0, 240, 255, 0.4); z-index: 10; }
+										@media (max-width: 736px) { .galeri-otomatis { column-count: 2; column-gap: 10px; } }
+
+										#status-album { text-align: center; padding: 30px 0; color: #999; }
+
+										/* Lightbox untuk lihat foto ukuran besar */
+										#lightbox-overlay {
+											display: none;
+											position: fixed;
+											top: 0; left: 0;
+											width: 100%; height: 100%;
+											background: rgba(0,0,0,0.9);
+											z-index: 9999;
+											align-items: center;
+											justify-content: center;
+											cursor: zoom-out;
+										}
+										#lightbox-overlay img {
+											max-width: 90%;
+											max-height: 90%;
+											border-radius: 6px;
+											box-shadow: 0 0 30px rgba(0,240,255,0.3);
+										}
+										#lightbox-overlay .lightbox-close {
+											position: absolute;
+											top: 20px; right: 30px;
+											color: #fff;
+											font-size: 2em;
+											cursor: pointer;
+										}
+									</style>
+
+									<p id="status-album">Memuat galeri...</p>
+									<div class="galeri-otomatis" id="wadah-album"></div>
+
+								</div>
+							</div>
+
+					</section>
+
+				<section id="footer">
+						<div class="inner">
+							<h2 class="major">Kontak <span style="font-size: 0.6em; font-weight: normal; text-transform: none; color: #ccc;">(Contact)</span></h2>
+							<p>Mari terhubung atau silakan sapa saya melalui tautan di bawah ini.<br>
+							<i style="color: #bbb;">Let's connect or feel free to say hello through the links below.</i></p>
+
+							<ul class="contact">
+								<li class="icon solid fa-envelope"><a href="mailto:dzulkhyilham@gmail.com">dzulkhyilham@gmail.com</a></li>
+								<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/ilham-dzulkhy-643691406" target="_blank">LinkedIn Profile</a></li>
+								<li class="icon brands fa-instagram"><a href="https://instagram.com/dzulkhy018" target="_blank">@dzulkhy018</a></li>
+							</ul>
+							<ul class="copyright">
+								<li>&copy; 2026 Ilham Dzulkhy. All rights reserved.</li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Lightbox: muncul saat foto diklik -->
+		<div id="lightbox-overlay">
+			<span class="lightbox-close">&times;</span>
+			<img id="lightbox-img" src="" alt="">
+		</div>
+
+		<script>
+			// ===== SETINGAN =====
+			const USERNAME = 'IlhamDzulkhy';
+			const REPO = 'portofolio';
+			const FOLDER = 'organisasi'; // di file lain (pengalaman.html, prestasi.html, proyek.html) tinggal ganti ini
+
+			const wadah = document.getElementById('wadah-album');
+			const status = document.getElementById('status-album');
+			const apiUrl = `https://api.github.com/repos/${USERNAME}/${REPO}/contents/${FOLDER}`;
+
+			fetch(apiUrl)
+				.then(res => {
+					if (!res.ok) throw new Error('Gagal mengambil data (status ' + res.status + ')');
+					return res.json();
+				})
+				.then(data => {
+					const fotoList = data.filter(file =>
+						file.type === 'file' && /\.(jpe?g|png|gif|webp)$/i.test(file.name)
+					);
+
+					if (fotoList.length === 0) {
+						status.textContent = 'Belum ada dokumentasi yang diupload di folder ini.';
+						return;
+					}
+
+					status.remove();
+					fotoList.forEach(file => {
+						const img = document.createElement('img');
+						img.src = file.download_url;
+						img.alt = file.name;
+						img.loading = 'lazy';
+						img.onclick = () => bukaLightbox(file.download_url, file.name);
+						wadah.appendChild(img);
+					});
+				})
+				.catch(err => {
+					status.textContent = 'Galeri belum bisa dimuat. Coba refresh halaman ini beberapa saat lagi.';
+					console.error('Gagal memuat galeri:', err);
+				});
+
+			// ===== LIGHTBOX =====
+			const overlay = document.getElementById('lightbox-overlay');
+			const lightboxImg = document.getElementById('lightbox-img');
+
+			function bukaLightbox(src, alt) {
+				lightboxImg.src = src;
+				lightboxImg.alt = alt;
+				overlay.style.display = 'flex';
+			}
+
+			overlay.addEventListener('click', () => {
+				overlay.style.display = 'none';
+				lightboxImg.src = '';
+			});
+		</script>
+
+	</body>
+</html>
