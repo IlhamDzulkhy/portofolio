@@ -13,17 +13,6 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		
 		<style>
-			/* =================================================== */
-			/* SAPU BERSIH BACKGROUND KEBIRUAN JADI ABU-ABU/HITAM  */
-			/* =================================================== */
-			body, #page-wrapper { background-color: #121212 !important; }
-			#banner { background-color: #1a1a1a !important; background-image: none !important; }
-			#one.wrapper.style1 { background-color: #242424 !important; background-image: none !important; }
-			#two.wrapper.style2 { background-color: #1c1c1c !important; background-image: none !important; }
-			#three.wrapper.style3 { background-color: #171717 !important; background-image: none !important; }
-			#four { background-color: #121212 !important; background-image: none !important; }
-			#footer { background-color: #0a0a0a !important; background-image: none !important; }
-
 			/* Efek Scroll Mulus dari tombol "Next" */
 			html {
 				scroll-behavior: smooth;
@@ -34,19 +23,17 @@
 				#four .features {
 					display: grid !important;
 					grid-template-columns: repeat(2, 1fr) !important;
-					gap: 12px !important; /* Jarak antar kotak */
+					gap: 12px !important;
 				}
 				#four .features article {
 					width: 100% !important;
 					margin: 0 !important;
-					padding: 0 !important; /* Hapus padding agar gambar bisa ngepres 100% ke ujung */
-					border-radius: 8px !important; /* Lengkungkan sudut luar kotak */
-					overflow: hidden !important; /* Potong paksa gambar yang keluar dari lengkungan */
+					padding: 0 !important; 
+					border-radius: 8px !important; 
+					overflow: hidden !important; 
 					display: flex !important;
 					flex-direction: column !important;
 				}
-				
-				/* FIX: Gambar benar-benar menyentuh ujung bingkai */
 				#four .features article .image {
 					display: block !important;
 					width: 100% !important;
@@ -55,12 +42,10 @@
 				}
 				#four .features article .image img {
 					width: 100% !important;
-					height: 110px !important; /* Paksa tinggi gambar seragam agar rapi sejajar */
+					height: 110px !important; 
 					display: block !important;
 					object-fit: cover !important; 
 				}
-				
-				/* Padding hanya diberikan pada Teks dan Tombol agar tidak menempel ke pinggir */
 				#four .features article h3 {
 					font-size: 0.85em !important;
 					margin: 12px 10px 5px 10px !important;
@@ -69,7 +54,7 @@
 					font-size: 0.7em !important;
 					line-height: 1.4 !important;
 					margin: 0 10px 10px 10px !important;
-					flex-grow: 1 !important; /* Mendorong tombol selalu sejajar di bawah */
+					flex-grow: 1 !important; 
 				}
 				#four .features article .special {
 					font-size: 0.65em !important;
@@ -82,11 +67,11 @@
 				aspect-ratio: 1 / 1 !important;
 				object-fit: cover !important;
 			}
+			
 			/* =================================================== */
 			/* EFEK HOLOGRAM 3D KOMPLEKS (TEMA ABU-ABU / SILVER)   */
 			/* =================================================== */
 			
-			/* 1. MENGHAPUS LINGKARAN HITAM BAWAAN TEMPLATE */
 			.wrapper.spotlight .image.holo-container {
 				background: transparent !important;
 				border: none !important;
@@ -95,14 +80,11 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				perspective: 1200px; /* Jarak pandang kamera 3D */
+				perspective: 1200px; 
 				overflow: visible !important;
 				width: 250px !important;
 			}
 
-			/* ======================================= */
-			/* HOLOGRAM 1: QUANTUM CORE (NOMOR 2)      */
-			/* ======================================= */
 			.holo-core {
 				position: relative;
 				width: 150px;
@@ -111,7 +93,6 @@
 				animation: spin3D 12s linear infinite;
 			}
 			
-			/* Cincin Energi Pelindung */
 			.holo-ring {
 				position: absolute;
 				width: 100%;
@@ -124,7 +105,6 @@
 			.holo-ring.y { transform: rotateX(0deg) rotateY(70deg); }
 			.holo-ring.z { transform: rotateX(45deg) rotateY(45deg); border: 2px dotted rgba(200, 200, 200, 0.8);}
 
-			/* Kubus Data Melayang di Tengah */
 			.holo-cube {
 				position: absolute;
 				top: 30%; left: 30%;
@@ -140,7 +120,6 @@
 				box-shadow: 0 0 20px rgba(200, 200, 200, 0.5) inset;
 				backdrop-filter: blur(2px);
 			}
-			/* Pemosisi Sisi Kubus */
 			.face.front  { transform: translateZ(30px); }
 			.face.back   { transform: rotateY(180deg) translateZ(30px); }
 			.face.right  { transform: rotateY(90deg) translateZ(30px); }
@@ -148,11 +127,6 @@
 			.face.top    { transform: rotateX(90deg) translateZ(30px); }
 			.face.bottom { transform: rotateX(-90deg) translateZ(30px); }
 
-		/* ======================================= */
-			/* HOLOGRAM 3: CYBER RUNNER (ANAK LARI)    */
-			/* ======================================= */
-			
-			/* Area bermain si anak hologram */
 			.holo-run-area {
 				position: relative;
 				width: 180px;
@@ -161,57 +135,33 @@
 				justify-content: center;
 				align-items: center;
 				border-radius: 50%;
-				/* Efek grid lantai virtual agar terasa 3D */
 				background: 
 					linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px) center,
 					linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px) center;
 				background-size: 20px 20px;
 				box-shadow: inset 0 0 40px rgba(200, 200, 200, 0.1);
-				overflow: visible; /* Biar larinya bisa tembus keluar lingkaran dikit */
+				overflow: visible; 
 			}
 			
-			/* Wadah tubuh anak */
-		/* ======================================= */
-			/* SI ANAK LARI BEBAS (KELILING TEKS)      */
-			/* ======================================= */
-			
 			.cyber-kid {
-				position: absolute; /* Lepas dari arus normal */
+				position: absolute; 
 				width: 30px; 
 				height: 50px;
-				z-index: 100; /* Lari di atas teks dan gambar */
-				pointer-events: none; /* Biar nggak nutupin tombol pas dilewati */
-				
-				/* Panggil animasi rute keliling kotak selama 12 detik */
+				z-index: 100; 
+				pointer-events: none; 
 				animation: runAround 12s linear infinite; 
 			}
 
-			/* Rute Lari Mengelilingi Teks (Responsif) */
 			@keyframes runAround {
-				/* 1. Mulai dari Pojok Kiri Atas, hadap Kanan */
 				0%   { top: -20px; left: 0%; transform: scale(0.7) scaleX(1); }
-				
-				/* 2. Lari lurus ke Pojok Kanan Atas */
 				35%  { top: -20px; left: 90%; transform: scale(0.7) scaleX(1); }
-				
-				/* 3. Putar badan kilat (persiapan turun) */
 				36%  { top: -20px; left: 90%; transform: scale(0.7) scaleX(-1); }
-				
-				/* 4. Lari turun ke Pojok Kanan Bawah */
 				50%  { top: 90%; left: 90%; transform: scale(0.7) scaleX(-1); }
-				
-				/* 5. Lari ke kiri menuju Pojok Kiri Bawah (hadap kiri) */
 				85%  { top: 90%; left: 0%; transform: scale(0.7) scaleX(-1); }
-				
-				/* 6. Putar badan kilat menghadap kanan lagi */
 				86%  { top: 90%; left: 0%; transform: scale(0.7) scaleX(1); }
-				
-				/* 7. Lari naik kembali ke Pojok Kiri Atas */
 				100% { top: -20px; left: 0%; transform: scale(0.7) scaleX(1); }
 			}
-			/* =================================================== */
-			/* FIX 1: ANIMASI KUBUS (Biar nggak berhenti)          */
-			/* =================================================== */
+
 			@keyframes spin3D {
 				0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
 				100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
@@ -221,29 +171,20 @@
 				100% { transform: rotateX(0deg) rotateY(360deg) rotateZ(0deg); }
 			}
 
-			/* =================================================== */
-			/* FIX 2: ANTI-LAG UNTUK HP (Mematikan efek berat)     */
-			/* =================================================== */
 			@media screen and (max-width: 736px) {
 				.holo-cube .face {
-					backdrop-filter: none !important; /* Ini biang kerok lag di HP */
-					box-shadow: 0 0 5px rgba(200, 200, 200, 0.5) inset !important; /* Dibikin ringan */
+					backdrop-filter: none !important; 
+					box-shadow: 0 0 5px rgba(200, 200, 200, 0.5) inset !important; 
 				}
 			}
 
-			/* =================================================== */
-			/* FIX 3: MUNCULIN BADAN ANAK LARI                     */
-			/* =================================================== */
-			/* Membentuk Kepala & Badan dengan efek Neon Glow */
 			.c-head { width: 12px; height: 12px; border-radius: 50%; background: #cccccc; position: absolute; top: 0; left: 9px; box-shadow: 0 0 15px #cccccc, 0 0 5px #fff; }
 			.c-body { width: 4px; height: 22px; background: #cccccc; position: absolute; top: 12px; left: 13px; box-shadow: 0 0 10px #cccccc; }
 			
-			/* Membentuk Tangan & Kaki */
 			.c-arm, .c-leg { width: 4px; background: #cccccc; position: absolute; border-radius: 2px; box-shadow: 0 0 10px #cccccc; }
 			.c-arm { height: 16px; top: 14px; left: 13px; transform-origin: top center; }
 			.c-leg { height: 20px; top: 32px; left: 13px; transform-origin: top center; }
 
-			/* Menganimasikan Tangan & Kaki (Ayun Bergantian) */
 			.arm-1 { animation: swingArm 0.5s infinite alternate ease-in-out; }
 			.arm-2 { animation: swingArmRev 0.5s infinite alternate ease-in-out; }
 			.leg-1 { animation: swingLegRev 0.5s infinite alternate ease-in-out; }
@@ -253,28 +194,55 @@
 			@keyframes swingArmRev { 0% { transform: rotate(60deg); } 100% { transform: rotate(-60deg); } }
 			@keyframes swingLeg { 0% { transform: rotate(-45deg); } 100% { transform: rotate(50deg); } }
 			@keyframes swingLegRev { 0% { transform: rotate(50deg); } 100% { transform: rotate(-45deg); } }
-									/* =================================================== */
-			/* FIX POSISI KHUSUS HP: NO 2 KIRI, NO 3 KANAN         */
-			/* =================================================== */
+			
 			@media screen and (max-width: 736px) {
-				/* Hologram 2 (Fokus) mepet mentok KIRI di HP */
 				#two .image.holo-container {
 					width: 100% !important;
 					justify-content: flex-start !important; 
 					transform: none !important;
 					margin: 0 0 2em 0 !important;
 				}
-
-								/* Hologram 3 (Pengalaman) mepet mentok KANAN di HP */
 				#three .image.holo-container {
 					width: 100% !important;
 					justify-content: flex-end !important; 
-					margin: 0 0 2em 0 !important; /* Samakan marginnya dengan No 2 biar rapi */
-					transform: translateX(50px) !important; /* Dosis dorongan ke KANAN */
+					margin: 0 0 2em 0 !important; 
+					transform: translateX(50px) !important; 
 				}
-
 			}
 
+			/* =================================================== */
+			/* SAPU BERSIH TEMA BIRU (TETAP PERTAHANKAN EFEK KACA) */
+			/* =================================================== */
+			
+			/* 1. Pakai efek "Blend Mode" agar tekstur background utama jadi abu-abu tanpa merusak kaca */
+			body, #page-wrapper, #banner {
+				background-color: #222222 !important;
+				background-blend-mode: luminosity !important; 
+			}
+
+			/* 2. Ganti Paksa warna biru pada bagian yang miring (pseudo-elements) jadi warna abu */
+			.wrapper.style1, .wrapper.style1:before, .wrapper.style1:after {
+				background-color: #2a2a2a !important;
+				background-image: none !important; /* Hapus gradasi biru */
+			}
+			.wrapper.style2, .wrapper.style2:before, .wrapper.style2:after {
+				background-color: #363636 !important;
+				background-image: none !important;
+			}
+			.wrapper.style3, .wrapper.style3:before, .wrapper.style3:after {
+				background-color: #1e1e1e !important;
+				background-image: none !important;
+			}
+
+			/* 3. Pastikan kotak transparan (alt) tetap bening tembus pandang */
+			.wrapper.alt {
+				background-color: transparent !important;
+			}
+			
+			#footer {
+				background-color: #151515 !important;
+				background-image: none !important;
+			}
 		</style>
 	</head>
 	<body class="is-preload">
@@ -476,23 +444,6 @@
 			<li class="icon brands fa-linkedin"><a href="https://linkedin.com/in/ilham-dzulkhy-643691406" target="_blank">LinkedIn Profile</a></li>
 			<li class="icon brands fa-instagram"><a href="https://instagram.com/dzulkhy018" target="_blank">@dzulkhy018</a></li>
 		</ul>
-		<ul class="copyright">
-			<li>&copy; 2026 Ilham Dzulkhy. All rights reserved.</li>
-		</ul>
-	</div>
-</section>
-			</div>
-
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
-
-	</body>
-</html>
 		<ul class="copyright">
 			<li>&copy; 2026 Ilham Dzulkhy. All rights reserved.</li>
 		</ul>
